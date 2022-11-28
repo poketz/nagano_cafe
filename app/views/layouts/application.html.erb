@@ -11,6 +11,17 @@
   </head>
 
   <body>
+    <header>
+    <% if customer_signed_in? %>
+      <p>4242</p>
+    <% else %>
+      <% if admin_signed_in? %>
+        <p>aaa</p>
+      <% else %>
+        <p>bbb</p>
+      <% end %>
+    <% end %>
+    </header>    
     <%= yield %>
   </body>
 </html>
