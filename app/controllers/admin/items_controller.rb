@@ -42,3 +42,4 @@ class Admin::ItemsController < ApplicationController
                                  :genre_id, :price, :is_active)
   end
 end
+

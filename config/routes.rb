@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :registrations, only: [:new, :create]
     resources :sessions, only: [:new, :create, :destroy]
+    resources :items, only: [:index, :show]
     resources :customers, only: [:show, :edit, :update]
     get '/customers/confirm' => 'customers#confirm'
     patch '/customers/withdrow' => 'customers#withdrow'
