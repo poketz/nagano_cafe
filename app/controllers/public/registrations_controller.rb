@@ -10,9 +10,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    @customer = Customer.new(customer_params)
+    if @customer.save!
+      redirect_to items_path
+    else
+      render :new
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +64,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  def customer_params
+    params.require(:customer)
+    .permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :email, 
+            :postal_code, :address, :telephone_number, :password)
+  end
 end

@@ -1,8 +1,8 @@
 <h2>新規会員登録</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_with model: @customer, url: customer_registration_path do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  
+
   <div class="field">
     <%= f.label :first_name, "名前" %>
     (姓)<%= f.text_field :first_name %>
@@ -17,7 +17,7 @@
 
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email , "メールアドレス" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
