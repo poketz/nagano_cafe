@@ -7,9 +7,9 @@ Rails.application.routes.draw do
     registrations: 'public/registrations',
     sessions: 'public/sessions'
   }
-  
+
   namespace :admin do
-    root to: 'homes#top' 
+    root to: 'homes#top'
     resources :sessions, only: [:new, :create, :destroy]
     resources :items, except: [:destroy]
     resources :genres, only: [:index, :create, :edit, :update]
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update]
     get '/customers/confirm' => 'customers#confirm'
     patch '/customers/withdrow' => 'customers#withdrow'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+    delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :orders, only: [:new, :index, :show]
     post '/orders/confirm' => 'orders#confirm'
     get '/orders/complete' => 'orders#complete'
