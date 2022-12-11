@@ -17,7 +17,7 @@
         <li><%= link_to 'マイページ', customer_path(current_customer.id) %></li>
         <li><%= link_to '商品一覧', items_path %></li>
         <li><%= link_to 'カート', cart_items_path %></li>
-        <li><%= link_to 'ログアウト', session_path(current_customer.id), method: :delete %></li>
+        <li><%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %></li>
       <% else %>
         <% if admin_signed_in? %>
           <li><%= link_to '商品一覧', admin_items_path %></li>

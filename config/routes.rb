@@ -26,11 +26,11 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :edit, :update]
     get '/customers/confirm' => 'customers#confirm'
     patch '/customers/withdrow' => 'customers#withdrow'
-    resources :cart_items, only: [:index, :update, :destroy, :create]
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :update, :destroy, :create]
     resources :orders, only: [:new, :index, :show]
     post '/orders/confirm' => 'orders#confirm'
     get '/orders/complete' => 'orders#complete'
-    resources :adresses, except: [:new, :show]
+    resources :addresses, except: [:new, :show]
   end
 end

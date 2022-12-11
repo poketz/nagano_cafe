@@ -1,4 +1,5 @@
 <h2>ショッピングカート</h2>
+<%= button_to 'カートを空にする', {controller: "cart_items", action: "destroy_all"}, method: :delete %>
 <table>
   <thead>
     <th>商品名</th>
@@ -11,17 +12,23 @@
     <tr>
       <td><%= cart_item.item.name %></td>
       <td><%= cart_item.item.with_tax_price %></td>
-      <td><%= cart_item.amount %></td>
+      <td><%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
+            <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+            <%= f.select :amount, *[1..5], { selected: cart_item.amount } %>
+            <%= f.submit '変更' %>
+          <% end %></td>
       <td><%= cart_item.subtotal %></td>
       <% @total_price += cart_item.subtotal %>
+      <td><%= button_to '削除する', cart_item_path(cart_item.id), method: :delete %></td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
+<%= button_to '買い物を続ける', items_path, method: :get %>
 <table>
   <tr>
     <td>合計金額</td>
     <td><%= @total_price %></td>
   </tr>
 </table>
+<%= button_to '情報入力に進む', new_order_path, method: :get %>
