@@ -1,6 +1,6 @@
 <h2>マイページ</h2>
 <strong>登録情報</strong>
-<%= button_to '編集する', edit_customer_path(params[:id]) %>
+<%= button_to '編集する', edit_customer_path(params[:id]), method: :get %>
 
 <table>
   <tr>
@@ -31,3 +31,5 @@
 
 <strong>配送先</strong>
 <%= button_to '一覧を見る', addresses_path, method: :get %>
+<strong>注文履歴</strong>
+<%= button_to '一覧を見る', orders_path, method: :get %>

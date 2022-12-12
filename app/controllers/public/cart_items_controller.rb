@@ -13,13 +13,13 @@ class Public::CartItemsController < ApplicationController
       @cart_items.each do |cart_item|
         if @cart_items.find_by(item_id: cart_item_params[:item_id])
           cart_item.amount += cart_item_params[:amount].to_i
-          cart_item.update!(amount: cart_item.amount)
+          cart_item.update(amount: cart_item.amount)
         else
-          @cart_item.save!
+          @cart_item.save
         end
       end
     else  
-      @cart_item.save!
+      @cart_item.save
     end
     redirect_to cart_items_path
   end
