@@ -10,7 +10,12 @@ ja:
         making: "製作中"
         preparing: "発送準備中"
         shipped: "発送済み"
-          
+    order_detail:
+      making_status:
+        not_allowed: "着手不可"
+        waiting: "製作待ち"
+        making: "製作中"
+        complete: "製作完了"
 
   activerecord:
     errors:
@@ -29,7 +34,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -55,7 +60,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -193,4 +198,3 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
-          
