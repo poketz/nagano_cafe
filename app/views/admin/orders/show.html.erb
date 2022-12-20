@@ -4,7 +4,7 @@
 <p><strong>配送先</strong>　〒<%= @order.postal_code %> <%= @order.address %> <%= @order.name %></p>
 <p><strong>支払方法</strong>　<%= @order.payment_method_i18n %></p>
 <p><strong>注文ステータス</strong>
-  <%= form_with model: @order, url: order_path(@order.id) do |f| %>
+  <%= form_with model: @order, url: admin_order_path(@order.id) do |f| %>
     <%= f.select :order_status, Order.order_statuses.keys.map { |k| [t("enums.order.order_status.#{k}"), k] } %>
     <%= f.submit '更新' %>
   <% end %></p>
@@ -12,7 +12,7 @@
 <table>
   <thead>
     <th>商品名</th>
-    <th>単価（税込）</th>
+    <th>単価(税込)</th>
     <th>数量</th>
     <th>小計</th>
     <th>製作ステータス</th>
@@ -24,7 +24,7 @@
       <td><%= order_detail.price %></td>
       <td><%= order_detail.amount %></td>
       <td><%= order_detail.price * order_detail.amount %></td>
-      <td><%= form_with model: order_detail, url: order_path(@order.id) do |f| %>
+      <td><%= form_with model: order_detail, url: admin_order_detail_path(@order.id, order_detail.id) do |f| %>
             <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] } %>
             <%= f.submit '更新' %>
           <% end %></td>
@@ -33,6 +33,6 @@
   </tbody>
 </table>
 
-<p><strong></strong></p>
-<p><strong></strong></p>
-<p><strong></strong></p>
+<p><strong>商品合計</strong>　<%= @order.total_payment - @order.postage %>円</p>
+<p><strong>送料</strong>　<%= @order.postage %>円</p>
+<p><strong>請求金額合計　<%= @order.total_payment %>円</strong></p>
