@@ -1,5 +1,5 @@
 <div class="container">
-  <h3><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h3>
+  <h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h4>
   <row class="mt-5">
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
 
@@ -55,7 +55,7 @@
       <%= f.label :is_deleted , "会員ステータス", class: "col-lg-2" %>
       <div class="form-check ml-3">
         <%= f.radio_button :is_deleted, false, class: "form-check-input" %>
-        <%= f.label :is_deleted_false, "有効", class: "form-check-label"%>
+        <%= f.label :is_deleted_false, "有効", class: "form-check-label" %>
       </div>
       <div class="form-check ml-3">
         <%= f.radio_button :is_deleted, true, class: "form-check-input" %>
