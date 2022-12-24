@@ -1,8 +1,8 @@
 <div class="container">
-  <h4>商品詳細</h4>
+  <h4 class="ml-3">商品詳細</h4>
   <div class="row mt-5">
     <%= image_tag @item.image, class: "img-fluid col-lg-6" %>
-    <table class="table col-lg-6 col-md-9 mt-lg-0 mt-5">
+    <table class="table col-lg-6 col-md-9 mt-lg-3 mt-5 mx-4">
       <tr>
         <td>商品名</td>
         <td><%= @item.name %></td>
@@ -30,8 +30,6 @@
     </table>
   </div>
   <div class="row justify-content-center mt-5">
-    <%= link_to '編集する', edit_admin_item_path, class: "btn btn-success btn-lg" %>
+    <%= link_to '編集する', edit_admin_item_path, class: "btn btn-success px-4 mb-5" %>
   </div>
-
-
 </div>

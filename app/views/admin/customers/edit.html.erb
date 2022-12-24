@@ -1,8 +1,7 @@
 <div class="container">
-  <h4><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h4>
-  <row class="mt-5">
+  <h4 class="ml-3"><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h4>
+  
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
-
     <div class="row mt-5">
       <%= f.label :first_name, "氏名", class: "col-lg-2" %>
       <div class="col-lg-3 form-group">
@@ -64,7 +63,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "変更を保存", class: "btn btn-success offset-2 mb-5" %>
+      <%= f.submit "変更を保存", class: "btn btn-success offset-2 mb-5 px-4" %>
     </div>
   <% end %>
   </row>

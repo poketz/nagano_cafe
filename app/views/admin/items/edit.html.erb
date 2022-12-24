@@ -1,40 +1,40 @@
 <div class="container">
-  <h4>商品編集</h4>
-  <%= form_with model: @item, url: admin_item_path do |f| %>
+  <h4 class="ml-3">商品編集</h4>
+  <%= form_with model: @item, url: admin_item_path, class: "mx-5" do |f| %>
     <div class="form-group row mt-5">
-      <%= f.label :image, "商品画像", class: "col-md-2" %>
-      <%= f.file_field :image, accept: "image/*", class: "form-control-file col-md-8" %>
+      <%= f.label :image, "商品画像", class: "col-md-3 col-lg-2" %>
+      <%= f.file_field :image, accept: "image/*", class: "form-control-file col-md-6 col-10 pl-0" %>
     </div>
     <div class="form-group row">
-      <%= f.label :image, "商品名", class: "col-md-2" %>
-      <%= f.text_field :name, class: "form-control col-md-8" %>
+      <%= f.label :name, "商品名", class: "col-md-3 col-lg-2" %>
+      <%= f.text_field :name, class: "form-control col-md-6 col-10" %>
     </div>
     <div class="form-group row">
-      <%= f.label :introduction, "商品説明", class: "col-md-2" %>
-      <%= f.text_area :introduction, class: "form-control col-md-8" %>
+      <%= f.label :introduction, "商品説明", class: "col-md-3 col-lg-2" %>
+      <%= f.text_area :introduction, class: "form-control col-md-6 col-10" %>
     </div>
     <div class="form-group row">
-      <%= f.label :genre_id, "ジャンル", class: "col-md-2" %>
-      <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+      <%= f.label :genre_id, "ジャンル", class: "col-md-3 col-lg-2" %>
+      <%= f.collection_select :genre_id, @genres, :id, :name, { prompt: false }, class: "form-control col-md-6 col-10" %>
     </div>
     <div class="form-group row">
-      <%= f.label :price, "税抜価格", class: "col-md-2" %>
-      <%= f.text_field :price, class: "form-control col-md-8" %>円
+      <%= f.label :price, "税抜価格", class: "col-md-3 col-lg-2" %>
+      <%= f.text_field :price, class: "form-control col-md-6 col-10" %>　円
     </div>
- 
+
     <div class="form-group row">
-      <%= f.label :is_active, "販売ステータス", class: "col-md-2" %>
+      <%= f.label :is_active, "販売ステータス", class: "col-md-3 col-lg-2" %>
       <div class="form-check ml-3">
         <%= f.radio_button :is_active, :true, class: "form-check-input" %>
         <%= f.label :is_active_true, "販売中", class: "form-check-label" %>
       </div>
-      <div class="form-check ml-3">
+      <div class="form-check ml-3 mb-3">
         <%= f.radio_button :is_active, :false, class: "form-check-input" %>
-        <%= f.label :is_active_true, "販売停止中", class: "form-check-label" %>
+        <%= f.label :is_active_false, "販売停止中", class: "form-check-label" %>
       </div>
     </div>
-
-      <%= f.submit '変更を保存', class: 'btn btn-success' %>
-
+    <div class="row offset-3">
+      <%= f.submit '変更を保存', class: 'btn btn-success mb-5 px-4' %>
+    </div>
   <% end %>
 </div>
