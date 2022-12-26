@@ -1,9 +1,9 @@
 <%- if controller_name != 'sessions' %>
-  <h3>既に登録済みの方</h3>
-  <%= link_to "こちら", new_customer_session_path %>　からログインしてください。<br />
+  <p class="ml-5 mt-3"><span class="border-bottom border-dark">既に登録済みの方</span></p>
+  <%= link_to "こちら", new_customer_session_path, class: "ml-3" %>　からログインしてください。<br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <h3>会員登録がお済みでない方</h3>
-  <%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。<br />
+  <p class="ml-5"><span class="border-bottom border-dark">会員登録がお済みでない方</span></p>
+  <%= link_to "こちら", new_customer_registration_path, class: "offset-2" %>　から新規登録を行ってください。<br />
 <% end %>

@@ -1,6 +1,6 @@
  <div class="container">
   <h4 class="ml-3">注文履歴詳細</h4>
-  <table class="table mt-4 col-lg-7">
+  <table class="table table-borderless mt-4 col-lg-7">
     <tr>
       <td class="font-weight-bold">購入者</td>
       <td><%= @order.customer.first_name %><%= @order.customer.last_name %></td>
@@ -25,9 +25,9 @@
           <% end %></td>
     </tr>
   </table>
-  <div class="row my-5">
-    <table class="table col-lg-7">
-      <thead>
+  <div class="row my-5 mx-0">
+    <table class="table col-lg-7 ">
+      <thead class="thead-light">
         <th>商品名</th>
         <th>単価(税込)</th>
         <th>数量</th>
@@ -38,9 +38,9 @@
       <% @order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.price %></td>
+          <td><%= order_detail.price.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
-          <td><%= order_detail.price * order_detail.amount %></td>
+          <td><%= (order_detail.price * order_detail.amount).to_s(:delimited) %></td>
           <td><%= form_with model: order_detail, url: admin_order_detail_path(@order.id, order_detail.id) do |f| %>
                 <%= f.select :making_status, OrderDetail.making_statuses.keys.map { |k| [t("enums.order_detail.making_status.#{k}"), k] }, {}, class: "form-control-sm" %>
                 <%= f.submit '更新', class: "btn btn-success btn-sm" %>
@@ -50,10 +50,10 @@
       </tbody>
     </table>
     
-    <table class="table col-lg-3 col-8 ml-lg-5 ml-0 mt-lg-0 mt-4">
+    <table class="table table-borderless col-lg-3 col-6 ml-lg-5 mt-lg-0 mt-4">
       <tr>
         <td class="font-weight-bold">商品合計</td>
-        <td><%= @order.total_payment - @order.postage %>円</td>
+        <td><%= (@order.total_payment - @order.postage).to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <td class="font-weight-bold">送料</td>
@@ -61,7 +61,7 @@
       </tr>
       <tr>
         <td class="font-weight-bold">請求金額合計</td>
-        <td><%= @order.total_payment %>円</td>
+        <td class="font-weight-bold"><%= @order.total_payment.to_s(:delimited) %>円</td>
       </tr>
     </table>
   </div>
