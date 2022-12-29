@@ -1,34 +1,46 @@
-<h2>ショッピングカート</h2>
-<%= button_to 'カートを空にする', {controller: "cart_items", action: "destroy_all"}, method: :delete %>
-<table>
-  <thead>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-  </thead>
-  <tbody>
-  <% @cart_items.each do |cart_item| %>
-    <tr>
-      <td><%= cart_item.item.name %></td>
-      <td><%= cart_item.item.with_tax_price %></td>
-      <td><%= form_with model: cart_item, url: cart_item_path(cart_item.id) do |f| %>
-            <%= f.hidden_field :item_id, :value => cart_item.item_id %>
-            <%= f.select :amount, *[1..5], { selected: cart_item.amount } %>
-            <%= f.submit '変更' %>
-          <% end %></td>
-      <td><%= cart_item.subtotal %></td>
-      <% @total_price += cart_item.subtotal %>
-      <td><%= button_to '削除する', cart_item_path(cart_item.id), method: :delete %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-<%= button_to '買い物を続ける', items_path, method: :get %>
-<table>
-  <tr>
-    <td>合計金額</td>
-    <td><%= @total_price %></td>
-  </tr>
-</table>
-<%= button_to '情報入力に進む', new_order_path, method: :get %>
+<div class="container">
+  <div class="d-flex justify-content-between mb-4">
+    <h4 class="ml-3 mb-0">ショッピングカート</h4>
+    <%= link_to 'カートを空にする',  cart_items_destroy_all_path, method: :delete,
+    data: {confirm: "カート内の商品を全て削除しますか？"}, class: "btn btn-danger btn-sm" %>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-bordered text-nowrap mb-0">
+      <thead class="bg-light text-dark">
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th></th>
+      </thead>
+      <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td><%= image_tag cart_item.item.image, width: 70, class: "mr-3" %><%= cart_item.item.name %></td>
+          <td><%= (cart_item.item.with_tax_price).to_s(:delimited) %></td>
+          <td><%= form_with model: cart_item, url: cart_item_path(cart_item.id), class: "form-inline d-flex flex-nowrap" do |f| %>
+                <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+                <%= f.select :amount, *[1..5], { selected: cart_item.amount }, class: "form-control mr-1" %>
+                <%= f.submit '変更', class: "btn btn-success btn-sm" %>
+              <% end %></td>
+          <td><%= cart_item.subtotal.to_s(:delimited) %></td>
+          <% @total_price += cart_item.subtotal %>
+          <td><%= button_to '削除する', cart_item_path(cart_item.id), method: :delete, data: {confirm: "選択した商品を削除しますか？"}, class: "btn btn-danger btn-sm" %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
+    <%= button_to '買い物を続ける', items_path, method: :get, class: "btn btn-primary btn-sm" %>
+    <table class="table table-bordered col-lg-3 col-5 mb-0">
+      <tr>
+        <th class="bg-light text-dark">合計金額</th>
+        <td><%= @total_price.to_s(:delimited) %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="justify-content-center d-flex mb-4">
+    <%= link_to '情報入力に進む', new_order_path, method: :get , class: "btn btn-success" %>
+  </div>
+</div>
