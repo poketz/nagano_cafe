@@ -1,35 +1,48 @@
-<h2>マイページ</h2>
-<strong>登録情報</strong>
-<%= button_to '編集する', edit_customer_path(params[:id]), method: :get %>
+ <div class="container">
+  <h4 class="ml-3 mb-4">マイページ</h4>
+  <table class="table table-borderless mb-4 col-7 col-md-5 col-lg-4">
+    <tr>
+      <td class="h5 font-weight-bold" style="vertical-align:middle;">登録情報</td>
+      <td><%= link_to '編集する', edit_customer_path(params[:id]), method: :get, class: "btn btn-success px-4" %></td>
+    </tr>
+  </table>
 
-<table>
-  <tr>
-    <td>氏名</td>
-    <td><%= @customer.first_name %>　<%= @customer.last_name %></td>
-  </tr>
-  <tr>
-    <td>カナ</td>
-    <td><%= @customer.first_name_kana %>　<%= @customer.last_name_kana %></td>
-  </tr>
-  <tr>
-    <td>郵便番号</td>
-    <td><%= @customer.postal_code %></td>
-  </tr>
-  <tr>
-    <td>住所</td>
-    <td><%= @customer.address %></td>
-  </tr>
-  <tr>
-    <td>電話番号</td>
-    <td><%= @customer.telephone_number %></td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td><%= @customer.email %></td>
-  </tr>
-</table>
+  <table class="table table-bordered col-lg-8">
+    <tr>
+      <td class="col-4 bg-light">氏名</td>
+      <td><%= @customer.first_name %>　<%= @customer.last_name %></td>
+    </tr>
+    <tr>
+      <td class="col-4 bg-light">カナ</td>
+      <td><%= @customer.first_name_kana %>　<%= @customer.last_name_kana %></td>
+    </tr>
+    <tr>
+      <td class="col-4 bg-light">郵便番号</td>
+      <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+      <td class="col-4 bg-light">住所</td>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td class="col-4 bg-light">電話番号</td>
+      <td><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+      <td class="col-4 bg-light">メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </table>
 
-<strong>配送先</strong>
-<%= button_to '一覧を見る', addresses_path, method: :get %>
-<strong>注文履歴</strong>
-<%= button_to '一覧を見る', orders_path, method: :get %>
+  <table class="table table-borderless col-7 col-md-5 col-lg-4">
+    <tr>
+      <td class="h5 font-weight-bold" style="vertical-align:middle;">配送先</td>
+      <td><%= link_to '一覧を見る', addresses_path, method: :get, class: "btn btn-primary px-4" %></td>
+    </tr>
+    <tr>
+      <td class="h5 font-weight-bold" style="vertical-align:middle;">注文履歴</td>
+      <td><%= link_to '一覧を見る', orders_path, method: :get, class: "btn btn-primary px-4" %></td>
+    </tr>
+  </table>
+
+</div>

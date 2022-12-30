@@ -2,7 +2,7 @@
   <h4 class="ml-3">会員情報編集</h4>
   <%= form_with model: @customer, url: customer_path(@customer.id), class: "px-3 mt-4" do |f| %>
     <div class="row">
-      <%= f.label :first_name, "氏名", class: "col-lg-3" %>
+      <%= f.label :first_name, "氏名", class: "col-md-3" %>
       <div class="col-lg-3 col-md-4 form-group">
         <%= f.text_field :first_name, class: " form-control" %>
       </div>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row">
-      <%= f.label :first_name_kana, "フリガナ", class: "col-lg-3" %>
+      <%= f.label :first_name_kana, "フリガナ", class: "col-md-3" %>
       <div class="col-lg-3 col-md-4 form-group">
         <%= f.text_field :first_name_kana, class: "form-control" %>
       </div>
@@ -20,34 +20,36 @@
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :postal_code, "郵便番号", class: "col-lg-3" %>
+      <%= f.label :postal_code, "郵便番号", class: "col-md-3" %>
       <div class="col-lg-3 col-md-4">
       <%= f.text_field :postal_code, class: "form-control" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :address, "住所", class: "col-lg-3" %>
+      <%= f.label :address, "住所", class: "col-md-3" %>
       <div class="col-lg-6 col-md-8">
       <%= f.text_field :address, class: "form-control" %>
       </div>
     </div>
     <div class="form-group row">
-      <%= f.label :telephone_number, "電話番号", class: "col-lg-3" %>
+      <%= f.label :telephone_number, "電話番号", class: "col-md-3" %>
       <div class="col-lg-3 col-md-4">
       <%= f.text_field :telephone_number, class: "form-control" %>
       </div>
     </div>
-    <div class="form-group row">
-      <%= f.label :email, "メールアドレス", class: "col-lg-3" %>
+    <div class="form-group row mb-4">
+      <%= f.label :email, "メールアドレス", class: "col-md-3" %>
       <div class="col-lg-3 col-md-4">
       <%= f.text_field :email, class: "form-control" %>
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit "編集内容を保存" %>
+    <div class="row mb-5 justify-content-around">
+      <%= f.submit "編集内容を保存", class: "btn btn-success px-5" %>
+      <%= link_to '退会する', customers_confirm_path, method: :get, class: "btn btn-danger" %>
+
     </div>
   <% end %>
-
-  <%= button_to '退会する', customers_confirm_path, method: :get %>
 </div>
+
+  

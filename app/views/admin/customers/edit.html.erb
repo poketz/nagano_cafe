@@ -1,6 +1,6 @@
 <div class="container">
   <h4 class="ml-3"><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h4>
-  
+
   <%= form_with model: @customer, url: admin_customer_path do |f| %>
     <div class="row mt-5">
       <%= f.label :first_name, "氏名", class: "col-lg-2" %>
