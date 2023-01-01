@@ -5,17 +5,19 @@
   購入には会員登録が必要になります。</p>
 
   <h3 class="mb-4">新着商品</h3>
-  <div class="card-deck mb-3">
-    <% @items.each do |item| %>
-    <div class="card">
-      <%= link_to item_path(item.id) do %>
-        <%= image_tag item.image, class: "card-img-top" %>
-      <% end %>
-      <div class="card-body">
-        <p class="card-title"><%= item.name %></p>
-        <p class="card-text">
-          ￥<%= item.price %>
-        </p>
+  
+  <div class="card-group mb-3">
+    <% @items.each do |item|  %>
+      <div class="card mb-3">
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image, class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <p class="card-title"><%= item.name %></p>
+          <p class="card-text">
+            ￥<%= item.price.to_s(:delimited) %>
+          </p>
+        </div>
       </div>
     </div>
     <% end %>

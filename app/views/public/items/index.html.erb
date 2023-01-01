@@ -1,9 +1,21 @@
-<h1>商品一覧(全<%= Item.count %>件)</h1>
-
-<% @items.each do |item| %>
-  <div><%= link_to item_path(item.id) do %>
-         <%= image_tag item.image, width: 200 %>
-       <% end %></div>
-  <div><%= item.name %></div>
-  <div>￥<%= item.price %></div>
-<% end %>
+<div class="container">
+  <h3 class="mb-4">商品一覧(全<%= Item.count %>件)</h3>
+  
+<div class="card-group mb-3">
+    <% @items.each do |item| %>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card mb-3">
+        <%= link_to item_path(item.id) do %>
+          <%= image_tag item.image, class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <p class="card-title"><%= item.name %></p>
+          <p class="card-text">
+            ￥<%= item.price.to_s(:delimited) %>
+          </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
