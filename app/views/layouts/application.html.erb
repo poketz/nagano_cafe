@@ -13,7 +13,7 @@
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3 text-dark" href="/"><%= image_tag 'cake.png', width: '32' %> nagano_cake</a>
+          <a class="navbar-brand p-3 text-dark" href="/"><%= image_tag 'cake.png', width: '36' %> <span class="align-middle h4">nagano_cake</span></a>
           <% if customer_signed_in? %>
             <span class="ml-md-4 ml-0">ようこそ、<%= current_customer.first_name %>さん！</span>
           <% end %>

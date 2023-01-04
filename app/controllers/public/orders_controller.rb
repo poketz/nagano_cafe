@@ -41,7 +41,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
-    binding.pry
   end
 
   def index
