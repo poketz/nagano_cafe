@@ -2,8 +2,8 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
   
   def index
-    @cart_items = CartItem.all
-    @cart_item =
+    @cart_items = current_customer.cart_items.all
+    @cart_item = 
     @total_price = 0
   end
 

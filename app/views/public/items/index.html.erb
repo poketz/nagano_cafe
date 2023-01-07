@@ -1,9 +1,10 @@
 <div class="container">
   <h3 class="mb-4">商品一覧(全<%= Item.count %>件)</h3>
-  
+
 <div class="card-group mb-3">
+  <div class="row px-2">
     <% @items.each do |item| %>
-    <div class="col-lg-3 col-sm-6">
+    <div class="col-lg-3 col-6">
       <div class="card mb-3">
         <%= link_to item_path(item.id) do %>
           <%= image_tag item.image, class: "card-img-top" %>

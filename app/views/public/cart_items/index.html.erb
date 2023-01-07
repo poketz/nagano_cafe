@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="d-flex justify-content-between mb-4">
+  <div class="d-sm-flex justify-content-between mb-4">
     <h4 class="ml-3 mb-0">ショッピングカート</h4>
     <%= link_to 'カートを空にする',  cart_items_destroy_all_path, method: :delete,
-    data: {confirm: "カート内の商品を全て削除しますか？"}, class: "btn btn-danger btn-sm" %>
+    data: {confirm: "カート内の商品を全て削除しますか？"}, class: "btn btn-danger btn-sm mt-3 ml-3 mt-sm-0 ml-sm-0" %>
   </div>
   <div class="table-responsive">
     <table class="table table-bordered text-nowrap mb-0">
@@ -32,7 +32,7 @@
     </table>
   </div>
   <div class="d-flex justify-content-between align-items-center mb-4 mt-4">
-    <%= button_to '買い物を続ける', items_path, method: :get, class: "btn btn-primary btn-sm" %>
+    <%= button_to '買い物を続ける', root_path, method: :get, class: "btn btn-primary btn-sm" %>
     <table class="table table-bordered col-lg-3 col-5 mb-0">
       <tr>
         <th class="bg-light text-dark">合計金額</th>
@@ -40,7 +40,9 @@
       </tr>
     </table>
   </div>
-  <div class="justify-content-center d-flex mb-4">
-    <%= link_to '情報入力に進む', new_order_path, method: :get , class: "btn btn-success" %>
-  </div>
+  <% if @cart_items.present? %>
+    <div class="justify-content-center d-flex mb-4">
+      <%= link_to '情報入力に進む', new_order_path, method: :get , class: "btn btn-success" %>
+    </div>
+  <% end %>
 </div>
